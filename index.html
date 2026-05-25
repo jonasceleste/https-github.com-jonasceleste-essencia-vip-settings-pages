@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSÊNCIA VIP - Perfumes Lattafa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941F;
+            --dark: #0a0a0a;
+            --whatsapp: #25d366;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* LOGO CSS LUXUOSA */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(212,175,55,0.1) 0%, transparent 70%);
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Frasco de perfume */
+        .perfume-bottle {
+            font-size: 60px;
+            filter: drop-shadow(0 0 15px rgba(212,175,55,0.6));
+            animation: float 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Flor de lótus */
+        .lotus-flower {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Texto ESSÊNCIA VIP */
+        .brand-text {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            background: linear-gradient(to bottom, #F4E5C2 0%, #D4AF37 50%, #B8941F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(212,175,55,0.3);
+            position: relative;
+        }
+
+        .brand-vip {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 400;
+            letter-spacing: 12px;
+            background: linear-gradient(to right, #B8941F, #D4AF37, #F4E5C2, #D4AF37, #B8941F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Ornamentos decorativos */
+        .ornament {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 15px auto;
+            position: relative;
+        }
+
+        .ornament::before {
+            content: "✦";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold);
+            font-size: 20px;
+            background: var(--dark);
+            padding: 0 10px;
+        }
+
+        /* Brilhos dourados */
+        .sparkle {
+            position: absolute;
+            color: var(--gold);
+            font-size: 20px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 70%; right: 15%; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .brand-name { font-size: 32px; letter-spacing: 4px; }
+            .brand-vip { font-size: 24px; letter-spacing: 8px; }
+            .perfume-bottle { font-size: 40px; }
+            .lotus-flower { font-size: 35px; top: -15px; }
+        }
+
+        /* BOTÃO FLUTUANTE WHATSAPP GRUPO VIP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--whatsapp), #128c7e);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: pulse-whatsapp 2s infinite;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .whatsapp-float::before { content: "👥"; font-size: 28px; }
+
+        .whatsapp-tooltip {
+            position: fixed;
+            bottom: 40px;
+            right: 100px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+            border: 1px solid var(--whatsapp);
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover + .whatsapp-tooltip { opacity: 1; }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+            .whatsapp-tooltip { display: none; }
+        }
+
+        /* NAVBAR */
+        nav {
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+            transition: color 0.3s;
+            font-family: 'Cinzel', serif;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--whatsapp), #128c7e);
+            color: white; padding: 10px 20px; border-radius: 25px;
+            font-weight: 700; font-size: 13px; text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'Cinzel', serif;
+        }
+        .btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(37,211,102,0.4); }
+
+        /* HERO */
+        .hero {
+            position: relative; min-height: 80vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden; z-index: 1;
+            background: radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, rgba(10,10,10,0) 70%);
+        }
+
+        .hero-content { position: relative; z-index: 2; padding: 40px 20px; max-width: 800px; }
+        
+        .hero-sub {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark); padding: 18px 40px; border-radius: 50px;
+            font-weight: 700; font-size: 16px; border: none; cursor: pointer;
+            transition: all 0.3s; text-decoration: none; display: inline-block;
+            letter-spacing: 2px; text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(212,175,55,0.4); }
+
+        .btn-whatsapp {
+            background: transparent;
+            color: var(--whatsapp); padding: 18px 40px; border-radius: 50px;
+            font-weight: 700; font-size: 16px; border: 2px solid var(--whatsapp);
+            cursor: pointer; transition: all 0.3s; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px;
+            letter-spacing: 2px; text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+        }
+        .btn-whatsapp:hover { background: rgba(37,211,102,0.1); transform: translateY(-3px); }
+
+        /* PRODUTOS */
+        .section-title { text-align: center; padding: 60px 20px 40px; }
+        .section-label {
+            font-size: 12px; letter-spacing: 5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        .section-title h2 {
+            font-size: 42px; font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Cinzel', serif;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px 80px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #1a1a1a, #111);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 20px; overflow: hidden;
+            transition: all 0.4s ease; position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px); border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(212,175,55,0.2);
+        }
+
+        .product-badge {
+            position: absolute; top: 15px; left: 15px; z-index: 3;
+            background: linear-gradient(135deg, #ff3366, #ff6b9d);
+            color: white; padding: 8px 16px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1px;
+            text-transform: uppercase; font-family: 'Cinzel', serif;
+        }
+        .product-badge.gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+        }
+
+        .product-img-wrap {
+            height: 350px; overflow: hidden; position: relative;
+            background: linear-gradient(135deg, #1a1a1a, #050505);
+        }
+        .product-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+
+        .product-info { padding: 30px; text-align: center; }
+        .product-brand {
+            font-size: 12px; color: var(--gold);
+            letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 10px; font-family: 'Cinzel', serif;
+        }
+        .product-name {
+            font-size: 24px; font-weight: 700;
+            margin-bottom: 15px; color: white;
+            font-family: 'Cinzel', serif;
+        }
+        .product-desc {
+            font-size: 15px; color: rgba(255,255,255,0.6);
+            margin-bottom: 25px; line-height: 1.6;
+            font-style: italic;
+        }
+
+        .whatsapp-product-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--whatsapp), #128c7e);
+            color: white; border: none; padding: 16px;
+            border-radius: 12px; font-weight: 700; font-size: 15px;
+            cursor: pointer; transition: all 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            text-decoration: none; font-family: 'Cinzel', serif;
+        }
+        .whatsapp-product-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050505;
+            border-top: 1px solid rgba(212,175,55,0.2);
+            padding: 50px 30px 30px; text-align: center;
+        }
+        .footer-text {
+            font-size: 24px; color: var(--gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px; margin-bottom: 20px;
+        }
+        .footer-bottom {
+            font-size: 12px; color: rgba(255,255,255,0.3);
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .products-grid { grid-template-columns: 1fr; }
+            .section-title h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BOTÃO FLUTUANTE GRUPO VIP -->
+<a href="https://chat.whatsapp.com/JS8TxefcDgj2mDOwPG5Pfy" class="whatsapp-float" target="_blank"></a>
+<div class="whatsapp-tooltip">👥 Entre no Grupo VIP!</div>
+
+<!-- NAVBAR COM LOGO CSS -->
+<nav>
+    <div class="logo-container" style="background: none; padding: 0;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 40px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.5));">⚱️</span>
+            <div style="text-align: left;">
+                <div style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; background: linear-gradient(to bottom, #F4E5C2, #D4AF37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px;">ESSÊNCIA</div>
+                <div style="font-family: 'Cinzel', serif; font-size: 18px; color: #D4AF37; letter-spacing: 6px;">VIP</div>
+            </div>
+        </div>
+    </div>
+    
+    <ul class="nav-links">
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+    
+    <a href="https://wa.me/5567992759705" target="_blank" class="btn-nav">💬 WhatsApp</a>
+</nav>
+
+<!-- HERO COM LOGO COMPLETA -->
+<section class="hero">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(212,175,55,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+    
+    <div class="hero-content">
+        <!-- LOGO COMPLETA CSS -->
+        <div class="logo-container" style="margin-bottom: 40px;">
+            <div style="position: relative; display: inline-block;">
+                <!-- Brilhos -->
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                
+                <!-- Flor de lótus -->
+                <div class="lotus-flower">🪷</div>
+                
+                <!-- Frasco -->
+                <div style="font-size: 80px; margin-bottom: -20px; filter: drop-shadow(0 0 20px rgba(212,175,55,0.6)); animation: float 3s ease-in-out infinite;">⚱️</div>
+                
+                <!-- Texto -->
+                <div class="brand-text">
+                    <h1 class="brand-name" style="font-size: 56px;">ESSÊNCIA</h1>
+                    <span class="brand-vip" style="font-size: 42px;">VIP</span>
+                </div>
+                
+                <!-- Ornamento -->
+                <div class="ornament" style="width: 250px; margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <p class="hero-sub">A Arte dos Perfumes Árabes</p>
+
+        <div class="hero-buttons">
+            <a href="#produtos" class="btn-primary">Ver Coleção</a>
+            <a href="https://chat.whatsapp.com/JS8TxefcDgj2mDOwPG5Pfy" target="_blank" class="btn-whatsapp">
+                👥 Grupo VIP
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+    <div class="section-title">
+        <span class="section-label">Coleção Exclusiva</span>
+        <h2>Nossos Perfumes</h2>
+    </div>
+
+    <div class="products-grid">
+        <!-- Produto 1 -->
+        <div class="product-card">
+            <span class="product-badge">Mais Vendido</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop" alt="Fakhar Rosé">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Fakhar Rosé</h3>
+                <p class="product-desc">Floral e sofisticado com notas de rosa, lavanda e lima. Fixação intensa.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Fakhar Rosé." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="product-card">
+            <span class="product-badge gold">Premium</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop" alt="Fakhar Gold">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Fakhar Gold</h3>
+                <p class="product-desc">Elegância árabe com oud, âmbar e especiarias. Presença marcante.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Fakhar Gold." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="product-card">
+            <span class="product-badge">Exclusivo</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400&h=400&fit=crop" alt="Fakhar Silver">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Fakhar Silver</h3>
+                <p class="product-desc">Frescor masculino com madeiras nobres e almíscar branco.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Fakhar Silver." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="product-card">
+            <span class="product-badge" style="background: linear-gradient(135deg,#ff69b4,#ff1493);">Feminino</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=400&fit=crop" alt="Yara">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Yara</h3>
+                <p class="product-desc">Doçura oriental com frutas tropicais, caramelo e flores brancas.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Yara." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="product-card">
+            <span class="product-badge gold">Unissex</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop" alt="Khamrah">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Khamrah</h3>
+                <p class="product-desc">Luxo amadeirado com canela, noz-moscada e oud. Composição única.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Khamrah." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="product-card">
+            <span class="product-badge" style="background: linear-gradient(135deg,#4169e1,#00008b);">Masculino</span>
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1523293188086-b15e4af4856e?w=400&h=400&fit=crop" alt="Asad">
+            </div>
+            <div class="product-info">
+                <span class="product-brand">Lattafa</span>
+                <h3 class="product-name">Asad</h3>
+                <p class="product-desc">Força masculina com tabaco, âmbar e especiarias.</p>
+                <a href="https://wa.me/5567992759705?text=Olá! Tenho interesse no Asad." target="_blank" class="whatsapp-product-btn">
+                    💬 Consultar Preço
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contato">
+    <div class="footer-text">ESSÊNCIA VIP</div>
+    <p class="footer-bottom">© 2024 Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
